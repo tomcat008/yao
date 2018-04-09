@@ -6,6 +6,22 @@
 </head>
 
 <body>
+<form action="/hello" method="get">
+
+    <input name="locale" type="hidden" value="zh_CN"/>
+
+    <button>切换为中文</button>
+
+</form>
+
+
+<form action="/hello" method="get">
+
+    <input name="locale" type="hidden" value="en_US"/>
+
+    <button>切换为英文</button>
+
+</form>
 <h1 th:inline="text">Hello.v.2</h1>
 <p th:text="${welcome}"></p>
 </body>
