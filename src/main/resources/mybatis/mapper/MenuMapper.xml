@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itdreamworks.yao.mapper.MenuMapper">
+    <resultMap id="BaseResultMap" type="com.itdreamworks.yao.entity.Menu">
+        <id column="Id" jdbcType="INTEGER" property="id"/>
+        <result column="Title" jdbcType="VARCHAR" property="title"/>
+        <result column="SortRight" jdbcType="INTEGER" property="sortRight"/>
+        <result column="IsShow" jdbcType="BIT" property="isShow"/>
+        <result column="Url" jdbcType="VARCHAR" property="url"/>
+    </resultMap>
+    <sql id="Table">
+        Menu
+    </sql>
+    <sql id="Base_Column_List">
+        Id, Title, SortRight, IsShow,Url
+    </sql>
+    <sql id="Fix_Option">
+        Id=#{id}
+    </sql>
+    <sql id="Filter_Show">
+        IsShow = 1
+    </sql>
+    <select id="findAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table"/>
+    </select>
+    <select id="findShow" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table"/>
+        WHERE
+        <include refid="Filter_Show"/>
+    </select>
+    <select id="find" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM
+        <include refid="Table"/>
+        WHERE
+        <include refid="Fix_Option"/>
+    </select>
+    <update id="modify" parameterType="com.itdreamworks.yao.entity.Menu">
+        UPDATE
+        <include refid="Table"/>
+        SET
+        Title = #{title},
+        SortRight=#{sortRight},
+        IsShow=#{isShow},
+        Url=#{url}
+        WHERE
+        <include refid="Fix_Option"/>
+    </update>
+    <insert id="add" parameterType="com.itdreamworks.yao.entity.Menu">
+        INSERT INTO
+        <include refid="Table"/>
+        (Title, Url, SortRight,IsShow)
+        VALUES
+        (#{title}, #{url}, #{sortRight},#{isShow,jdbcType=BIT})
+    </insert>
+</mapper>

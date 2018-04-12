@@ -1,5 +1,6 @@
 package com.itdreamworks.yao;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -14,8 +15,10 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 import java.util.Locale;
 
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
-
+//@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
+@SpringBootApplication
+//@EnableTransactionManagement
+@MapperScan("com.itdreamworks.yao.mapper")
 public class YaoApplication{
 
 	@Bean

@@ -1,14 +1,16 @@
 package com.itdreamworks.yao.controller;
 
+import com.itdreamworks.yao.entity.Menu;
 import com.itdreamworks.yao.utils.LocalMessageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
 import java.util.Map;
 
 @Controller
-public class HomeController {
+public class HomeController  extends BaseController{
 
     @Autowired
     private LocalMessageUtil messageUtil;
@@ -17,10 +19,11 @@ public class HomeController {
      */
     @RequestMapping({"/","/index","/home"})
     public String index(Map<String,Object> map){
+        List<Menu> menuList = menuDao.findShow();
         String welcome =  messageUtil.getMessage("welcome");
         map.put("lang",messageUtil.getMessage("lang"));
         map.put("title",messageUtil.getMessage("title"));
-
+        map.put("menus",menuList);
         return"/home";
     }
 

@@ -1,3 +1,14 @@
 spring:
+  datasource:
+      type: com.zaxxer.hikari.HikariDataSource
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/nanyangdb?useUnicode=true&characterEncoding=utf-8
+      username: root
+      password: 123456
   thymeleaf:
     cache: false
+
+mybatis:
+    type-aliases-package: com.itdreamworks.yao.entity
+    config-location: classpath:mybatis/mybatis-config.xml
+    mapper-locations: classpath:mybatis/mapper/*.xml
