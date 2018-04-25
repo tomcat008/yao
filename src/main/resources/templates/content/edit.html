@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      lang="zh_SG">
+<head th:include="/common/mhead :: head('文章内容编辑')"></head>
+
+<body>
+<style>
+    .toolbar {
+        border: 1px solid #ccc;
+    }
+    .editor {
+        border: 1px solid #ccc;
+    }
+    .editor img{ max-width: 100%}
+</style>
+<div class="row">
+    <ol class="breadcrumb">
+        <li><a href="#">系统管理</a></li>
+        <li><a href="/art/list">内容编辑</a></li>
+        <li th:text="${article.title}"></li>
+    </ol>
+</div>
+<form class="form-horizontal" enctype="multipart/form-data" method="post" action="/manage/content/save">
+    <input type="hidden" name="id" th:value="${article.id}">
+    <div class="form-group">
+        <div class="col-sm-6 col-sm-offset-1">
+            <img th:src="@{'/articles/'+${article.id}+'/pic.jpg?'+${r}}" style="max-height: 200px; max-width: 200px" alt="封面图" class="img-rounded">
+        </div>
+        <div class="col-sm-4">
+            <label for="exampleInputFile">封面图</label>
+            <input type="file" id="exampleInputFile" name="pic">
+            <p class="help-block">点击上传封面图片</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <textarea id="content" name="content" style="display: none"></textarea>
+        <div class="col-sm-10 col-sm-offset-1">
+            <div id="toolbar" class="toolbar">
+            </div>
+            <div id="editor" class="editor" th:utext="${article.content}">
+                <p>欢迎使用 <b>wangEditor</b> 富文本编辑器</p>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-success">保 存</button>
+        </div>
+    </div>
+</form>
+
+<div th:include="/common/load_js :: loadJs"></div>
+<script th:text="@{'var eid='+${article.id}}"></script>
+<!-- 注意， 只需要引用 JS，无需引用任何 CSS ！！！-->
+<script type="text/javascript" src="https://unpkg.com/wangeditor/release/wangEditor.min.js"></script>
+<script type="text/javascript">
+    var E = window.wangEditor;
+    var editor = new E('#toolbar','#editor');
+    var $content = $('#content');
+    editor.customConfig.onchange = function (html) {
+        // 监控变化，同步更新到 textarea
+        $content.val(html)
+    };
+    editor.customConfig.uploadImgMaxLength = 1;
+    editor.customConfig.uploadFileName = 'pic'
+    editor.customConfig.uploadImgServer = '/upload/pic/'+eid;
+    editor.customConfig.uploadImgHooks = {
+        error: function (xhr, editor) {
+            console.log(xhr);
+        }
+    };
+    editor.create();
+    // 初始化 textarea 的值
+    $content.val(editor.txt.html())
+
+</script>
+</body>
+</html>

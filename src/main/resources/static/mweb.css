@@ -12,7 +12,7 @@ html,
 body {
     color: #505050;
     line-height: 1.75em;
-    background: #ebebeb;
+    background: #ffffff;
     position: relative;
     font-family: "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "WenQuanYi Micro Hei", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
 }
@@ -54,31 +54,6 @@ a:active,
 a:focus,
 a img {
     outline: none;
-}
-.btn {
-    padding: 7px 14px;
-    border-radius: 2px;
-}
-.btn-default {
-    border: 1px solid #e67e22;
-    background: #e67e22;
-    color: #ffffff;
-    -webkit-transition: all 0.2s ease-in-out;
-    -o-transition: all 0.2s ease-in-out;
-    transition: all 0.2s ease-in-out;
-}
-.btn-default:hover {
-    border: 1px solid #303030;
-    background: #303030;
-    color: #ffffff;
-}
-.btn-default:focus {
-    outline: none;
-}
-.btn-default[disabled] {
-    border: 1px solid #303030;
-    background: #303030;
-    color: #ffffff;
 }
 input[type="search"],
 input[type="text"],
@@ -882,4 +857,3 @@ pre {
     height: 30px;
     line-height: 30px;
 }
-#editor {overflow:scroll; max-height:300px}

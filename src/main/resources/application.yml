@@ -1,4 +1,10 @@
 spring:
+  profiles:
+    active: dev
+  cache:
+    type: ehcache
+    ehcache:
+      config: ehcache.xml
   datasource:
       type: com.zaxxer.hikari.HikariDataSource
       driver-class-name: com.mysql.jdbc.Driver
@@ -12,3 +18,6 @@ mybatis:
     type-aliases-package: com.itdreamworks.yao.entity
     config-location: classpath:mybatis/mybatis-config.xml
     mapper-locations: classpath:mybatis/mapper/*.xml
+web:
+  articles:
+    path:

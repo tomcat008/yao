@@ -3,7 +3,8 @@ package com.itdreamworks.yao.entity;
 import java.io.Serializable;
 
 public class Menu implements Serializable {
-    private int id,sortRight,isShow;
+    private int id,sortRight;
+    private boolean isShow;
     private String title,url;
 
     public int getId() {
@@ -22,11 +23,11 @@ public class Menu implements Serializable {
         this.sortRight = sortRight;
     }
 
-    public int getIsShow() {
+    public boolean getIsShow() {
         return isShow;
     }
 
-    public void setIsShow(int isShow) {
+    public void setIsShow(boolean isShow) {
         this.isShow = isShow;
     }
 

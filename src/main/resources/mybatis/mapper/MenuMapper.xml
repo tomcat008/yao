@@ -56,8 +56,8 @@
     <insert id="add" parameterType="com.itdreamworks.yao.entity.Menu">
         INSERT INTO
         <include refid="Table"/>
-        (Title, Url, SortRight,IsShow)
+        (Id,Title, Url, SortRight,IsShow)
         VALUES
-        (#{title}, #{url}, #{sortRight},#{isShow,jdbcType=BIT})
+        (#{id},#{title}, #{url}, #{sortRight},#{isShow,jdbcType=BIT})
     </insert>
 </mapper>

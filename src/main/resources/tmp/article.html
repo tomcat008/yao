@@ -1,0 +1,65 @@
+<p>紧跟前两周发布的 Ghost 1.0.0-beta.1 的步伐，今天发布了
+    Ghost 1.0.0-beta.2 ，我们距离最终版本又迈了一大步。我们非常期盼这是最后一个 beta 版本，希望下一次发布的就是最终候选版。</p>
+
+<p>在第一个 beta 版本发布后的日子里，我们发现并修复了多个 bug：</p>
+
+<ul>
+    <li><strong>[已修复]</strong> ghost uninstall 不再搞乱你的 Ghost 实例列表了</li>
+    <li><strong>[已修复]</strong> 如果 .ghostpid 文件消失了，本地进程管理器也不会死掉</li>
+    <li><strong>[已修复]</strong> Casper 能够随 <code>ghost update</code> 命令一同更新了</li>
+    <li><strong>[改进]</strong> 对于需要 sudo 的命令会在运行钱以灰色标示出来（未来会改为提示）</li>
+    <li><strong>[已修复]</strong> 对于 <code>{{@blog.url}}</code> 会自动去除末尾的斜线</li>
+    <li><strong>[改进]</strong> 改进启用主题时的错误信息</li>
+    <li><strong>[修改]</strong> 默认开启 API</li>
+    <li><strong>[修改]</strong> 默认不开启拼写检查</li>
+</ul>
+
+<p>请参考<a href=" https:
+            //gist.github.com/kirrg001/5ab1e5d9b733f05664c42d3e357d5bb1">完整的修改日志</a>
+    了解此版本的详细信息。</p>
+
+<h2 id="ghost">Ghost 命令行工具发布新版本</h2>
+
+<p>伴随这次发布的 Ghost 新版本，我们还发布了 Ghost-CLI — 1.0.0-alpha.19 。您可以通过 <code>npm install -g
+    ghost-cli@latest</code> 命令升级到此版本。此次发布的版本修复了一个重大的 bug，以后再执行 <code>ghost update</code>
+    时就能够同步更新 Casper 主题了。</p>
+
+<h2 id="casper20">Casper 2.0</h2>
+
+<p>Ghost 1.0.0-beta.2 包含了一个重大改变，那就是拥有了一个全新的默认主题。</p>
+
+<p>Casper 最初是针对 Ghost 0.3 版本所具有的功能而设计的，但是随着 Ghost 的成长以及新特性的加入，这些新特性受到主题的限制未能充分发挥出来。现在，已经过去 4
+    年了，我们重新实现了 <br>
+    Casper 以使其支持 Ghost 的所有特性。</p>
+
+<p>我们将稍后会发布一篇完整的博文讲解 Casper 2.0 ，在此我们先从开发者的视角概述一下重要的改变：</p>
+
+<ul>
+    <li>性能更好，对 handlebars 的使用更简洁</li>
+    <li>更多的代码内注释，帮助新晋的 Ghost 主题开发者更好地理解
+        theme API 的工作原理
+    </li>
+    <li>利用 Gulp + PostCSS 组合构建并压缩主题所使用的资源文件</li>
+    <li>利用 <code>{{#get}}</code> 助手函数通过 API 抓去内容（API 被默认开启了）</li>
+    <li>对 Ghost 订阅的更好的支持</li>
+    <li>通过 Feedly 更好的处理 RSS ，舍弃原始 XML 方式</li>
+    <li>优化作者信息，Better author meta data with extended use of new social profile fields</li>
+    <li>Google 字体被替换为系统字体（赞，总算理解我中华局域网的限制了！！！）</li>
+    <li>图标字体（Icon font）被替换为 SVG 图标并内嵌到页面中</li>
+    <li>对移动设备的支持又更大的提升</li>
+</ul>
+
+<p><a href="http://static.ghostchina.com/image/2/72/6aee775ec3a044c7ba5c4bee7ed4a.png"
+      class="mfp-zoom" style="display:block;"><img
+        src="http://static.ghostchina.com/image/2/72/6aee775ec3a044c7ba5c4bee7ed4a.png"
+        alt="Casper 2.0 主题"></a></p>
+
+<h2 id="">致谢</h2>
+
+<p>Aileen Nowak, Kevin Ansfield, David Wolfe, John O'Nolan, Hannah Wolfe and Katharina
+    Irrgang</p>
+
+<hr>
+
+<p>原文地址：<a href="https://dev.ghost.org/1-0-0-beta-2/">https://dev.ghost.org/1-0-0-beta-2/</a>
+</p>

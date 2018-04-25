@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      lang="zh_SG">
+<head th:include="/common/head :: head('系统管理')"></head>
+
+<body class="home-template">
+<style>
+    .form-signin{ max-width: 400px; margin: 0 auto;}
+    .form-signin-heading{ margin-bottom: 20px}
+</style>
+<div class="container">
+    <form class="form-signin" method="post" action="/system/login">
+        <h2 class="form-signin-heading">用户登录</h2>
+        <label for="inputEmail">用户名</label>
+        <input type="text" id="inputEmail" name="loginId" class="form-control">
+        <label for="inputPassword">密码</label>
+        <input type="password" id="inputPassword" name="password" class="form-control">
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="remember-me"> 记住我
+            </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">登 录</button>
+    </form>
+
+</div>
+</body>
+</html>

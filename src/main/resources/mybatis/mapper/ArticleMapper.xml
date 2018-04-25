@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itdreamworks.yao.mapper.ArticleMapper">
+    <resultMap id="SimpleArticleForManageResultMap" type="com.itdreamworks.yao.model.SimpleArticleForManage">
+        <id column="Id" jdbcType="INTEGER" property="id"/>
+        <result column="MenuId" jdbcType="INTEGER" property="menuId"/>
+        <result column="Title" jdbcType="VARCHAR" property="title"/>
+        <result column="Author" jdbcType="VARCHAR" property="author"/>
+        <result column="KeyWords" jdbcType="VARCHAR" property="keyWords"/>
+        <result column="Description" jdbcType="VARCHAR" property="description"/>
+        <result column="PublishDate" jdbcType="DATE" property="publishDate"/>
+        <result column="IsShow" jdbcType="BIT" property="isShow"/>
+    </resultMap>
+    <resultMap id="SimpleArticleForShowResultMap" extends="SimpleArticleForManageResultMap" type="com.itdreamworks.yao.model.SimpleArticleForShow">
+        <result column="Pic" jdbcType="VARCHAR" property="pic"/>
+    </resultMap>
+    <resultMap id="ArticleResultMap" type="com.itdreamworks.yao.entity.Article">
+        <result column="MenuId" jdbcType="INTEGER" property="menuId"/>
+        <result column="Title" jdbcType="VARCHAR" property="title"/>
+        <result column="Author" jdbcType="VARCHAR" property="author"/>
+        <result column="KeyWords" jdbcType="VARCHAR" property="keyWords"/>
+        <result column="Description" jdbcType="VARCHAR" property="description"/>
+        <result column="PublishDate" jdbcType="DATE" property="publishDate"/>
+        <result column="Content" jdbcType="VARCHAR" property="content"/>
+        <result column="Pic" jdbcType="VARCHAR" property="pic"/>
+    </resultMap>
+    <resultMap id="ContentArticleForManageResultMap" type="com.itdreamworks.yao.model.ContentArticleForManage">
+        <id column="Id" jdbcType="INTEGER" property="id"/>
+        <result column="Pic" jdbcType="VARCHAR" property="pic"/>
+        <result column="Content" jdbcType="VARCHAR" property="content"/>
+    </resultMap>
+
+    <sql id="Table">
+        article
+    </sql>
+    <sql id="Less_Column_List">
+        Id, MenuId,Title,Author,KeyWords,Description,PublishDate,Pic,IsShow
+    </sql>
+    <sql id="Content_Column_List">
+        Id, Pic,Content
+    </sql>
+    <sql id="All_Column_List">
+        <include refid="Less_Column_List"/>,Content
+    </sql>
+    <select id="findAll" resultMap="ArticleResultMap">
+        select
+        <include refid="Less_Column_List"/>
+        from
+        <include refid="Table"/>
+    </select>
+    <select id="findByMenuId" resultMap="ArticleResultMap" parameterType="INTEGER">
+        select
+        <include refid="Less_Column_List"/>
+        from
+        <include refid="Table"/>
+        WHERE
+        MenuId <![CDATA[ & ]]> #{menuId} = #{menuId}
+    </select>
+    <select id="findByMenuIdForShow" resultMap="SimpleArticleForShowResultMap" parameterType="INTEGER">
+        select
+        <include refid="Less_Column_List"/>
+        from
+        <include refid="Table"/>
+        WHERE
+        IsShow = 1 and
+        MenuId <![CDATA[ & ]]> #{menuId} = #{menuId}
+    </select>
+    <select id="find" resultMap="ArticleResultMap" parameterType="INTEGER">
+        SELECT
+        <include refid="All_Column_List"/>
+        FROM
+        <include refid="Table"/>
+        WHERE
+        Id=#{id}
+    </select>
+    <update id="modify" parameterType="com.itdreamworks.yao.model.SimpleArticleForManage">
+        UPDATE
+        <include refid="Table"/>
+        SET
+        MenuId=#{menuId},
+        Title = #{title},
+        Author=#{author},
+        KeyWords=#{keyWords},
+        Description=#{description},
+        PublishDate=#{publishDate,jdbcType=DATE},
+        IsShow=#{isShow,jdbcType=BIT}
+        WHERE
+        Id=#{id}
+    </update>
+    <update id="modifyContent" parameterType="com.itdreamworks.yao.model.ContentArticleForManage">
+        UPDATE
+        <include refid="Table"/>
+        SET
+        Pic=#{pic},
+        Content=#{content}
+        WHERE
+        Id=#{id}
+    </update>
+    <insert id="add" parameterType="com.itdreamworks.yao.model.SimpleArticleForManage" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO
+        <include refid="Table"/>
+        (MenuId,Title, Author, PublishDate,KeyWords,Description,IsShow)
+        VALUES
+        (#{menuId}, #{title}, #{author},#{publishDate,jdbcType=DATE},#{keyWords},#{description},#{isShow,jdbcType=BIT})
+    </insert>
+    <delete id="delete">
+        DELETE FROM
+        <include refid="Table"/>
+        WHERE
+        Id=#{id}
+    </delete>
+</mapper>

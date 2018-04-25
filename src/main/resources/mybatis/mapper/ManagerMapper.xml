@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itdreamworks.yao.mapper.ManagerMapper">
+    <resultMap id="BaseResultMap" type="com.itdreamworks.yao.entity.Manager">
+        <id column="Id" jdbcType="INTEGER" property="id"/>
+        <result column="LoginId" jdbcType="VARCHAR" property="loginId"/>
+        <result column="Password" jdbcType="INTEGER" property="password"/>
+    </resultMap>
+    <sql id="Table">
+        Manager
+    </sql>
+    <sql id="Base_Column_List">
+        Id, LoginId, Password
+    </sql>
+    <select id="findAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table"/>
+    </select>
+    <select id="find" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM
+        <include refid="Table"/>
+        WHERE
+        LoginId=#{loginId}
+    </select>
+    <update id="changePassword" parameterType="com.itdreamworks.yao.entity.Manager">
+        UPDATE
+        <include refid="Table"/>
+        SET
+        Password = #{password}
+        WHERE
+        LoginId=#{loginId}
+    </update>
+</mapper>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${article.title}"></title>
+    <meta name="keywords" th:content="${article.keyWords}" />
+    <meta name="description" th:content="${article.description}" />
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"  crossorigin="anonymous">
+    <link rel="stylesheet" href="/web.css">
+
+</head>
+
+<body class="home-template">
+<header th:replace="/common/header :: header"></header>
+<nav th:replace="/common/menu :: menu"></nav>
+<section class="content-wrap">
+    <div class="container">
+        <div class="row">
+
+            <main class="col-md-12 main-content">
+                <article id="104" class="post">
+
+                    <header class="post-head">
+                        <h1 class="post-title" th:text="${article.title}"></h1>
+                        <section class="post-meta">
+                            <span class="author">作者：<a th:text="${article.author}"></a></span> •
+                            <time class="post-date" th:title="${#dates.format(article.publishDate, 'yyyy年MM月dd日')}" th:text="${#dates.format(article.publishDate, 'yyyy年MM月dd日')}"></time>
+                        </section>
+                    </header>
+                    <div class="featured-media" th:if="${article.pic}">
+                        <a th:href="@{'/article/'+${article.id}}" th:text="${article.title}"><img th:src="@{'/articles/'+${article.id}+'/pic.jpg'}" th:alt="${article.title}"></a>
+                    </div>
+
+                    <section class="featured-media" th:if="${article.pic}">
+                        <img th:src="@{'/articles/'+${article.id}+'/pic.jpg'}" th:alt="${article.title}" />
+                    </section>
+
+                    <section class="post-content" th:utext="${article.content}">
+                    </section>
+
+                    <footer class="post-footer clearfix">
+                        <div class="pull-left tag-list">
+                            <i class="fa fa-folder-open-o"></i>
+
+                        </div>
+
+                        <div class="pull-right share">
+                            <div class="bdsharebuttonbox share-icons bdshare-button-style0-24"
+                                 data-bd-bind="1524365951055">
+                                <a href="#" class="bds_more" data-cmd="more"></a>
+                                <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                                <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                                <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+                                <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+                                <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                            </div>
+                        </div>
+                    </footer>
+
+                </article>
+
+                <div class="about-author clearfix">
+                    <a href="/author/wangsai/"><img
+                            src="http://static.ghostchina.com/image/5/ea/da657733ee8c9add9cf3fd70183a6.png" alt="王赛"
+                            class="avatar pull-left"></a>
+
+                    <div class="details">
+                        <div class="author">
+                            原文 <a th:href="@{'/article/'+${article.id}}" th:text="${article.title}"></a>
+                        </div>
+                        <div class="meta-info">
+                            <span class="loaction">原文地址</span><a href="#">个人网站/博客</a></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="prev-next-wrap clearfix">
+
+                    <a class="btn btn-default" href="/1-0-0-beta-is-out/"><i class="fa fa-angle-left fa-fw"></i> 1.0.0
+                        Beta 版本发布啦！！！</a>
+                    &nbsp;
+
+                    <a class="btn btn-default" href="/ghost-1-0-rc1/">Ghost 1.0 RC1 发布，可用于生产环境 <i
+                            class="fa fa-angle-right fa-fw"></i></a>
+                </div>
+
+
+            </main>
+
+        </div>
+    </div>
+</section>
+<footer th:replace="/common/footer :: footer"></footer>
+<div th:replace="/common/copyright :: copyright"></div>
+<a th:replace="/common/gotop :: gotop"></a>
+<div th:include="/common/load_js :: loadJs"></div>
+</body>
+</html>
