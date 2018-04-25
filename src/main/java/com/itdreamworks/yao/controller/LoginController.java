@@ -9,12 +9,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
 import java.util.Map;
 
 @Controller
 @RequestMapping(value = "/system")
 public class LoginController {
     private static final String BASE_PATH = "/system";
+    public static final String LOGIN_URL=BASE_PATH;
 
     @Autowired
     private ManagerMapper managerDao;
@@ -25,9 +27,10 @@ public class LoginController {
     }
 
     @PostMapping(value = "/login")
-    public String login(String loginId, String password, Map<String, Object> map) {
+    public String login(String loginId, String password, Map<String, Object> map, HttpSession session) {
         Manager manager = managerDao.find(loginId);
         if (manager.getPassword().equals(Md5Util.encode(password))) {
+            session.setAttribute(Manager.MANAGER_IDENTITY,loginId);
             return "redirect:" + MenuController.BASE_PATH + "/list";
         } else {
             map.put("msg", "用户名或密码错误！");
@@ -35,5 +38,11 @@ public class LoginController {
             map.put("linkMsg", "再次尝试登录");
             return "failed";
         }
+    }
+
+    @GetMapping(value = "/logout")
+    public String logout(HttpSession session){
+        session.removeAttribute(Manager.MANAGER_IDENTITY);
+        return "redirect:" + LOGIN_URL;
     }
 }

@@ -18,11 +18,12 @@ public class Article implements Serializable {
     private String title, author, pic, content,keyWords,description;
     private Date publishDate;
 
-    public boolean isShow() {
+
+    public boolean getIsShow() {
         return isShow;
     }
 
-    public void setShow(boolean show) {
+    public void setIsShow(boolean show) {
         isShow = show;
     }
 

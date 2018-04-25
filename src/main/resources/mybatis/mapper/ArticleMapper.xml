@@ -23,6 +23,7 @@
         <result column="PublishDate" jdbcType="DATE" property="publishDate"/>
         <result column="Content" jdbcType="VARCHAR" property="content"/>
         <result column="Pic" jdbcType="VARCHAR" property="pic"/>
+        <result column="IsShow" jdbcType="BIT" property="isShow"/>
     </resultMap>
     <resultMap id="ContentArticleForManageResultMap" type="com.itdreamworks.yao.model.ContentArticleForManage">
         <id column="Id" jdbcType="INTEGER" property="id"/>

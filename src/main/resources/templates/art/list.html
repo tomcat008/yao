@@ -28,12 +28,15 @@
                 <button type="submit" class="btn btn-primary btn-xs">查询</button>
             </form>
         </th>
+        <th>状态</th>
         <th colspan="2">操作</th>
         <th><a href="/manage/art/add" class="btn btn-success btn-xs">添加</a></th>
     </tr>
     <tr th:each="a:${articles}">
         <td></td>
         <td colspan="2" th:text="${a.title}"></td>
+        <td th:if="${a.isShow}">显示</td>
+        <td th:unless="${a.isShow}">隐藏</td>
         <td>
             <a th:href="@{'/manage/art/edit/'+${a.id}}" class="btn btn-primary btn-xs">编辑</a>
         </td>

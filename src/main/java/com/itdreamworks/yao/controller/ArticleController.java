@@ -92,7 +92,7 @@ public class ArticleController extends BaseArticleController {
     @RequestMapping(value = "/edit/{id}")
     public String edit(@PathVariable("id") int id, Map<String, Object> map) {
         Article article = articleService.find(id);
-        map.put("art", article);
+        map.put("article", article);
         List<Menu> menus = menuService.findAll();
         for (Menu m : menus) {
             m.setIsShow(false);
