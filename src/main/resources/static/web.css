@@ -883,3 +883,4 @@ pre {
     line-height: 30px;
 }
 #editor {overflow:scroll; max-height:300px}
+.valid{background-color: #ffffff;min-height: 550px; padding: 21px 30px}

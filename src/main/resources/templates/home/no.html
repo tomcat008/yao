@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${title}"></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/web.css">
+</head>
+
+<body class="home-template">
+<header th:replace="/common/header :: header"></header>
+<nav th:replace="/common/menu :: menu"></nav>
+<section class="content-wrap">
+    <div class="container">
+        <div class="row">
+
+            <main class="col-md-12 main-content">
+                <article id="104" class="post">
+
+                    <header class="post-head">
+                        <h1 class="post-title">暂无内容</h1>
+                    </header>
+                </article>
+            </main>
+
+        </div>
+    </div>
+</section>
+<footer th:replace="/common/footer :: footer"></footer>
+<div th:replace="/common/copyright :: copyright"></div>
+<a th:replace="/common/gotop :: gotop"></a>
+<div th:include="/common/load_js :: loadJs"></div>
+</body>
+</html>

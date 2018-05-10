@@ -19,11 +19,11 @@ public class SimpleArticleForManage {
     private String author;
     private String publishDate;
 
-    public boolean isShow() {
+    public boolean getIsShow() {
         return isShow;
     }
 
-    public void setShow(boolean show) {
+    public void setIsShow(boolean show) {
         isShow = show;
     }
 

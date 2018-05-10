@@ -4,10 +4,12 @@
 <head th:include="/common/mhead :: head('菜单管理')"></head>
 
 <body>
+<div class="container">
 <div class="row">
     <div class="alert alert-warning" role="alert">
         <span th:text="${msg}"></span><a th:href="@{${link}}" class="alert-link" th:text="${linkMsg}"></a>
     </div>
+</div>
 </div>
 <div th:include="/common/load_js :: loadJs"></div>
 </body>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      lang="zh_SG">
+<head th:include="/common/mhead :: head('产品信息')"></head>
+
+<body class="home-template">
+<style>
+    .table img{
+        max-height: 50px;
+        max-width: 50px;}
+</style>
+<nav th:replace="/common/managemenu :: menu"></nav>
+<div class="container">
+    <div class="row">
+        <ol class="breadcrumb">
+            <li><a href="#">系统管理</a></li>
+            <li>产品信息</li>
+        </ol>
+    </div>
+    <table class="table table-hover">
+        <tr>
+            <td colspan="4">
+                <form class="form-inline" method="post" action="/manage/product/list">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="startDate" placeholder="开始时间">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="endDate" placeholder="结束时间">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-xs">查询</button>
+                </form>
+            </td>
+            <td colspan="2"><a href="/manage/product/import" target="_blank" class="btn btn-success btn-xs">导入产品数据</a></td>
+            </td></tr>
+        <tr>
+            <th>#</th>
+            <th>图片</th>
+            <th>Code</th>
+            <th>类别</th>
+            <th>颜色</th>
+            <th>描述</th>
+            <th>已验证</th>
+        </tr>
+        <tr th:each="a,state:${products}">
+            <td th:text="${state.index+1}"></td>
+            <td><img th:src="@{${a.pic}}">
+            </td>
+            <td th:text="${a.code}"></td>
+            <td th:text="${a.categoryName}"></td>
+            <td th:text="${a.colorValue}"></td>
+            <td th:text="${a.description}"></td>
+            <td th:text="${a.used}?'√':'×'"></td>
+        </tr>
+    </table>
+</div>
+<div th:include="/common/load_js :: loadJs"></div>
+</body>
+</html>

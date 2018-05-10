@@ -5,6 +5,16 @@ import java.io.Serializable;
 public class Menu implements Serializable {
     private int id,sortRight;
     private boolean isShow;
+
+    public boolean isCurrent() {
+        return current;
+    }
+
+    public void setCurrent(boolean current) {
+        this.current = current;
+    }
+
+    private boolean current;
     private String title,url;
 
     public int getId() {

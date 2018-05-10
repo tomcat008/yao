@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      lang="zh_SG">
+<head th:include="/common/mhead :: head('产品数据导入')"></head>
+
+<body>
+<div class="container">
+    <div class="row">
+        <ol class="breadcrumb">
+            <li><a href="#">系统管理</a></li>
+            <li><a href="/manage/product/list">产品信息</a></li>
+            <li>产品数据导入</li>
+        </ol>
+    </div>
+    <form class="form-horizontal" enctype="multipart/form-data" method="post" action="/manage/product/import">
+        <div class="form-group">
+            <label for="exampleInputFile">产品数据文档</label>
+            <input type="file" id="exampleInputFile" name="data">
+            <p class="help-block">点击上传产品数据</p>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-success">保 存</button>
+            </div>
+        </div>
+    </form>
+    <a href="/productDateTemp.zip">数据模板下载</a>
+</div>
+<div th:include="/common/load_js :: loadJs"></div>
+</body>
+</html>

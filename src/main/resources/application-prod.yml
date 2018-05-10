@@ -1,3 +1,5 @@
 web:
   articles:
-    directory:
+    directory: D:/Github/Files/articles
+  category:
+    directory: D:/Github/Files/categories

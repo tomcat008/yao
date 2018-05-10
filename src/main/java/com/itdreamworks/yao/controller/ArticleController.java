@@ -71,7 +71,7 @@ public class ArticleController extends BaseArticleController {
     }
 
     @PostMapping(value = "/addsave")
-    public String addSave(@ModelAttribute("art") SimpleArticleForManage article, Map<String, Object> map) throws FileNotFoundException {
+    public String addSave( SimpleArticleForManage article, Map<String, Object> map) throws FileNotFoundException {
 
         if (articleService.add(article)) {
 //            File path = new File(ResourceUtils.getURL("classpath:").getPath());
@@ -106,7 +106,7 @@ public class ArticleController extends BaseArticleController {
     }
 
     @PostMapping(value = "/editsave")
-    public String editSave(@ModelAttribute("art") SimpleArticleForManage article, Map<String, Object> map) {
+    public String editSave(SimpleArticleForManage article, Map<String, Object> map) {
 
         if (null != articleService.modify(article)) {
             return "redirect:" + BASE_PATH + "/list/0";

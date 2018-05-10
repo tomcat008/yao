@@ -26,7 +26,7 @@ public class ContentController extends BaseArticleController {
     public String get(@PathVariable("id") int id, Map<String, Object> map) throws Exception {
         Article article = articleService.find(id);
         if (null == article.getContent()) {
-            File tmpFile = ResourceUtils.getFile("classpath:tmp/art.html");
+            File tmpFile = ResourceUtils.getFile("classpath:tmp/article.html");
             BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(tmpFile)));
             StringBuilder sb = new StringBuilder();//定义一个字符串缓存，将字符串存放缓存中
             String s = "";
@@ -43,11 +43,12 @@ public class ContentController extends BaseArticleController {
 
     @PostMapping(value = "/save")
     public String save(@RequestParam("pic") MultipartFile pic, ContentArticleForManage article, BindingResult bindingResult, Map<String, Object> map) throws Exception {
+        if (!pic.isEmpty()) {
+            String path = articleDirectoryConfig.getDirectoryOrFilePath(String.format("%d/pic.jpg", article.getId()));
+            FileUtil.uploadFile(pic.getBytes(), path);
+            article.setPic(String.format("/articles/%d/pic.jpg",article.getId()));
+        }
         if (articleService.modifyContent(article)) {
-            if (!pic.isEmpty()) {
-                String path = articleDirectoryConfig.getDirectoryOrFilePath(String.format("%d/pic.jpg", article.getId()));
-                FileUtil.uploadFile(pic.getBytes(), path);
-            }
             map.put("msg", "修改内容成功！");
             return "success";
         } else {

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itdreamworks.yao.mapper.ProductMapper">
+    <resultMap id="BaseResultMap" type="com.itdreamworks.yao.entity.Product">
+        <id column="Id" jdbcType="INTEGER" property="id"/>
+        <result column="Code" jdbcType="VARCHAR" property="code"/>
+        <result column="CategoryId" jdbcType="INTEGER" property="categoryId"/>
+        <result column="Pic" jdbcType="VARCHAR" property="pic"/>
+        <result column="ColorValue" jdbcType="VARCHAR" property="colorValue"/>
+        <result column="Description" jdbcType="VARCHAR" property="description"/>
+        <result column="Used" jdbcType="BIT" property="used"/>
+        <result column="CheckDate" jdbcType="TIMESTAMP" property="checkDate"/>
+    </resultMap>
+    <resultMap id="ProductResultMap" type="com.itdreamworks.yao.model.Product">
+        <result column="Code" jdbcType="VARCHAR" property="code"/>
+        <result column="CategoryId" jdbcType="INTEGER" property="categoryId"/>
+        <result column="Pic" jdbcType="VARCHAR" property="pic"/>
+        <result column="ColorValue" jdbcType="VARCHAR" property="colorValue"/>
+        <result column="Description" jdbcType="VARCHAR" property="description"/>
+        <result column="Used" jdbcType="BIT" property="used"/>
+        <result column="CheckDate" jdbcType="TIMESTAMP" property="checkDate"/>
+    </resultMap>
+    <sql id="Table">
+        productcode
+    </sql>
+    <sql id="Base_Column_List">
+        Id, Code, CategoryId, Pic,ColorValue,Description,Used,CheckDate
+    </sql>
+    <sql id="Fix_Option">
+        Code=#{code}
+    </sql>
+    <select id="find" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM
+        <include refid="Table"/>
+        WHERE
+        <include refid="Fix_Option"/>
+    </select>
+    <select id="list" resultMap="ProductResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM
+        <include refid="Table"/>
+        WHERE
+        CreateDate between #{startDate,jdbcType=TIMESTAMP} and #{endDate,jdbcType=TIMESTAMP}
+    </select>
+    <update id="modify">
+        UPDATE
+        <include refid="Table"/>
+        SET
+        Used=1,CheckDate=NOW()
+        WHERE
+        <include refid="Fix_Option"/>
+    </update>
+    <insert id="add" parameterType="com.itdreamworks.yao.entity.Product">
+        INSERT INTO
+        <include refid="Table"/>
+        (Code, CategoryId, Pic,ColorValue,Description,Used,CreateDate)
+        VALUES
+        (#{code},#{categoryId}, #{pic},
+        #{colorValue},#{description},0,#{createDate,jdbcType=TIMESTAMP})
+    </insert>
+</mapper>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      lang="zh_SG">
+<head th:include="/common/head :: head"></head>
+
+<body class="home-template">
+<header th:replace="/common/header :: header"></header>
+<nav th:replace="/common/menu :: menu"></nav>
+<section class="content-wrap">
+    <div class="container">
+        <div class="row">
+            <main class="col-md-8 main-content widget valid">
+                <div th:if="${result}">
+                    <h4 class="title">验证结果</h4>
+                    <div class="widget">
+                            <div class="row" th:if="${result.have}">
+                                <div class="col-sm-6">
+                                    <img th:src="@{${result.pic}}" style="height: 150px" class="img-responsive center-block img-circle">
+                                </div>
+                                <div class="col-sm-6">
+                                    <div style="margin-top: 50px">
+                                    <h5>产品名称：<code th:text="${result.categoryName}"></code></h5>
+                                    <h5>首次验证：<code th:text="${result.used}?'×':'√'"></code></h5>
+                                    <h5>验证时间：<code th:text="${#dates.format(result.checkDate, 'yyyy年MM月dd日 HH:mm:ss')}"></code></h5>
+                                    <p th:text="${result.description}"></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div th:unless="${result.have}" class="form-group">
+                                <p th:utext="${result.errorMsg}"></p>
+                            </div>
+
+                    </div>
+                </div>
+                <div>
+                    <h4 class="title">真伪查询</h4>
+                    <div class="widget">
+                        <form action="/result" method="post">
+                            <div class="form-group">
+                                <label for="inputCode">防伪标识码</label>
+                                <input type="text" required class="form-control" name="code" id="inputCode"
+                                       placeholder="请输入防伪标识码">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputVCode">验证码</label>
+                                <input type="text" required class="form-control" name="vcode" id="inputVCode"
+                                       placeholder="请输入下面的验证码">
+                            </div>
+                            <div class="form-group">
+                                <img src="/vcode" alt="验证码" style="cursor: pointer" title="点击更换验证码"
+                                     onclick="this.src='/vcode?d='+new Date()*1" class="img-rounded"><span style="margin-left: 30px">看不清楚？点击验证码刷新</span>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">马上验证</button>
+                        </form>
+                    </div>
+                </div>
+            </main>
+
+            <aside th:replace="/common/aside :: aside"></aside>
+        </div>
+    </div>
+</section>
+<footer th:replace="/common/footer :: footer"></footer>
+<div th:replace="/common/copyright :: copyright"></div>
+<a th:replace="/common/gotop :: gotop"></a>
+<div th:include="/common/load_js :: loadJs"></div>
+</body>
+</html>

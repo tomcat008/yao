@@ -13,26 +13,27 @@ import java.util.Map;
 public class BaseController {
     public static final String TRY_MSG = "点我再试一下...";
     @Autowired
-    MenuService menuService;
+    protected MenuService menuService;
 
-    protected Menu getCurrentMenu(HttpServletRequest request){
+    protected Menu getCurrentMenu(HttpServletRequest request,List<Menu> menus){
         String path = request.getRequestURI();
-        List<Menu> menuList = menuService.findShow();
         Menu menu = null;
-        for (Menu m : menuList)
+        for (Menu m : menus)
         {
+            m.setCurrent(false);
             if(m.getUrl().equals(path) || m.getUrl().equals(path.substring(0,path.length()-1)))
             {
                 menu =m;
-                break;
+                menu.setCurrent(true);
           }
         }
         return menu;
     }
 
-    protected void prepareDataForCommandViewPart(Map<String,Object> map){
-        List<Menu> menuList = menuService.findAll();
+    protected List<Menu> prepareDataForViewPart(Map<String,Object> map){
+        List<Menu> menuList = menuService.findShow();
         map.put("menus",menuList);
+        return menuList;
     }
 
 }

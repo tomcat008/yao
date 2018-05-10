@@ -14,14 +14,9 @@
                 </div>
                 <div class="collapse navbar-collapse" id="main-menu">
                     <ul class="menu">
-                        <li th:each="m:${menus}">
+                        <li th:each="m:${menus}" th:class="${m.current}?'nav-current':''">
                             <a th:href="${m.url}" th:text="${m.title}"></a>
                         </li>
-                        <!--<li class="nav-current" role="presentation"><a href="/">首页</a></li>
-                        <li role="presentation"><a href="http://wenda.ghostchina.com">优选产品</a></li>
-                        <li role="presentation"><a href="/ghost-cheat-sheet/">真伪查询</a></li>
-                        <li role="presentation"><a href="http://docs.ghostchina.com/zh/">常见问题</a></li>
-                        <li role="presentation"><a href="/about/">南洋中医</a></li>-->
                     </ul>
                 </div>
             </div>

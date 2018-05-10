@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      lang="zh_SG">
+<head th:include="/common/head :: head"></head>
+
+<body class="home-template">
+<header th:replace="/common/header :: header"></header>
+<nav th:replace="/common/menu :: menu"></nav>
+<section class="content-wrap">
+    <div class="container">
+        <div class="row">
+            <main class="col-md-8 main-content widget valid">
+                <div th:if="${result}">
+                    <h4 class="title">验证结果</h4>
+                    <div class="widget">
+                        <div class="row" th:if="${result.have}">
+                            <div class="col-sm-6">
+                                <img th:src="@{${result.pic}}" style="height: 200px" class="img-responsive center-block img-circle">
+                            </div>
+                            <div class="col-sm-6">
+                                <div style="margin-top: 80px;font-weight: bold">
+                                    <h5>产品名称：<code th:text="${result.categoryName}"></code></h5>
+                                    <h5>首次验证：<code th:text="${result.used}?'×':'√'"></code></h5>
+                                    <h5>验证时间：<code th:text="${#dates.format(result.checkDate, 'yyyy年MM月dd日 HH:mm:ss')}"></code></h5>
+                                    <p th:text="${result.description}"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div th:unless="${result.have}" class="form-group">
+                            <p th:utext="${result.errorMsg}"></p>
+                        </div>
+
+                    </div>
+                </div>
+            </main>
+
+            <aside th:replace="/common/aside :: aside"></aside>
+        </div>
+    </div>
+</section>
+<footer th:replace="/common/footer :: footer"></footer>
+<div th:replace="/common/copyright :: copyright"></div>
+<a th:replace="/common/gotop :: gotop"></a>
+<div th:include="/common/load_js :: loadJs"></div>
+</body>
+</html>

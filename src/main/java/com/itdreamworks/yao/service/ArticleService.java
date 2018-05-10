@@ -26,6 +26,7 @@ public class ArticleService {
     public List<Article> findByMenuId(int id) {
         return articleDao.findByMenuId(id);
     }
+
     public List<SimpleArticleForShow> findByMenuIdForShow(int id) {
         return articleDao.findByMenuIdForShow(id);
     }

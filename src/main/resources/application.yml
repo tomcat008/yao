@@ -15,14 +15,27 @@ spring:
       driver-class-name: com.mysql.jdbc.Driver
       url: jdbc:mysql://127.0.0.1:3306/nanyangdb?useUnicode=true&characterEncoding=utf-8
       username: root
-      password: 123456
+      password: 80201288@qq.com
   thymeleaf:
     cache: false
-
 mybatis:
     type-aliases-package: com.itdreamworks.yao.entity
     config-location: classpath:mybatis/mybatis-config.xml
     mapper-locations: classpath:mybatis/mapper/*.xml
 web:
-  articles:
-    path:
+  pagesMeta:
+    -
+     path: index
+     title: 首页
+     keywords: dafdas,fasdfdas,fdsafdsa,fsdafdsa,fdssa
+     description: index
+    -
+     path: product
+     title: 优选产品
+     keywords: fdsafdsa,fdsafdsa,fas,fdsa,f,fds
+     description: product
+    -
+     path: qa
+     title: 常见问题
+     keywords: fda,fa,fdsa,fa,dsfdsa,fas,fdsa
+     description: qa
