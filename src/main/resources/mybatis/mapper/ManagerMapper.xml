@@ -7,7 +7,7 @@
         <result column="Password" jdbcType="INTEGER" property="password"/>
     </resultMap>
     <sql id="Table">
-        Manager
+        manager
     </sql>
     <sql id="Base_Column_List">
         Id, LoginId, Password

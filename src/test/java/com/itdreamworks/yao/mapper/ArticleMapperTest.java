@@ -12,14 +12,14 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-@SpringBootTest
-@RunWith(SpringRunner.class)
-public class ArticleMapperTest {
-    @Autowired
-    ArticleMapper articleMapper;
-    @Test
-    public void findAll() {
-        List<Article> ls = articleMapper.findAll();
-        assertEquals(0,ls.size());
-    }
-}
+//@SpringBootTest
+//@RunWith(SpringRunner.class)
+//public class ArticleMapperTest {
+//    @Autowired
+//    ArticleMapper articleMapper;
+//    @Test
+//    public void findAll() {
+//        List<Article> ls = articleMapper.findAll();
+//        assertEquals(0,ls.size());
+//    }
+//}

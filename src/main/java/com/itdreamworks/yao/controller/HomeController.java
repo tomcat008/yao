@@ -52,6 +52,7 @@ public class HomeController extends BaseArticleController {
         return "/home/index";
     }
 
+
     @RequestMapping("/")
     public String index(HttpServletRequest request, Map<String, Object> map) {
         return pageMethod(request, map, "index");

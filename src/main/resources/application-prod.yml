@@ -1,5 +1,16 @@
+server:
+  port: 8081
+spring:
+  datasource:
+      type: com.zaxxer.hikari.HikariDataSource
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/nanyangdb?useUnicode=true&characterEncoding=utf-8
+      username: root
+      password: 80201288@qq.com
+  thymeleaf:
+    cache: true
 web:
   articles:
-    directory: D:/Github/Files/articles
+    directory:  /home/java_server/yao/files/articles
   category:
-    directory: D:/Github/Files/categories
+    directory: /home/java_server/yao/files/categories

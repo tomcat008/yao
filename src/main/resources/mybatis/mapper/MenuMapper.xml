@@ -9,7 +9,7 @@
         <result column="Url" jdbcType="VARCHAR" property="url"/>
     </resultMap>
     <sql id="Table">
-        Menu
+        menu
     </sql>
     <sql id="Base_Column_List">
         Id, Title, SortRight, IsShow,Url
