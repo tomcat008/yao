@@ -45,12 +45,12 @@ public class ManagerController {
             map.put("msg", "密码修改成功！");
             map.put("link", BASE_PATH + "/list");
             map.put("linkMsg", "返回用户管理");
-            return "success";
+            return "/success";
         } else {
             map.put("msg", "密码修改失败！");
             map.put("link", BASE_PATH + "/list");
             map.put("linkMsg", "返回用户管理");
-            return "failed";
+            return "/failed";
         }
     }
 }

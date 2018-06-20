@@ -17,13 +17,13 @@ public class ProductService {
     private ProductMapper productDao;
 
     @Transactional
-    public void importProduct(List<Product> products){
-        for(Product product : products){
+    public void importProduct(List<Product> products) {
+        for (Product product : products) {
             productDao.add(product);
         }
     }
 
-    public List<com.itdreamworks.yao.model.Product> list(String startDate,String endDate){
-        return productDao.list(startDate,endDate);
+    public List<com.itdreamworks.yao.model.Product> list(String startDate, String endDate) {
+        return productDao.list(startDate, endDate);
     }
 }

@@ -51,13 +51,13 @@ public class ProductController {
                 map.put("msg", "产品数据导入成功！");
                 map.put("link", BASE_PATH + "/list");
                 map.put("linkMsg", "查看产品信息");
-                return "success";
+                return "/success";
             }
         }
         map.put("msg", "无效的产品导入操作！");
         map.put("link", BASE_PATH + "/import");
         map.put("linkMsg", "再试一次");
-        return "failed";
+        return "/failed";
     }
 
 }

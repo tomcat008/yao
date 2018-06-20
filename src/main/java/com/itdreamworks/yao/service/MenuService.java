@@ -33,7 +33,7 @@ public class MenuService {
 
     @CacheEvict(key = "\"SHOW\"")
     public Menu modify(Menu menu) {
-        return menuDao.modify(menu) == 1?menu:null;
+        return menuDao.modify(menu) == 1 ? menu : null;
     }
 
     @CacheEvict(key = "\"SHOW\"")

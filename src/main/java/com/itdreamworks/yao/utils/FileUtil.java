@@ -8,7 +8,7 @@ public class FileUtil {
         if (dir.isDirectory()) {
             String[] children = dir.list();
             //递归删除目录中的子目录下
-            for (int i=0; i<children.length; i++) {
+            for (int i = 0; i < children.length; i++) {
                 boolean success = deleteDirectory(new File(dir, children[i]));
                 if (!success) {
                     return false;

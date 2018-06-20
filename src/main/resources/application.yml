@@ -19,16 +19,21 @@ web:
   pagesMeta:
     -
      path: index
-     title: 首页
-     keywords: dafdas,fasdfdas,fdsafdsa,fsdafdsa,fdssa
-     description: index
+     title: 南洋中医官网-新加坡
+     keywords: 南洋中医鼻炎膏,V翘睫毛增长液
+     description: 南洋中医药研究院研制的各类中医药产品，均出自新加坡及东南亚名中医及名方，并赢得广大用户的信赖。采用科学新工艺研发的产品，均与高校院所联合研制并进行人群实验，安全可靠。
     -
      path: product
      title: 优选产品
-     keywords: fdsafdsa,fdsafdsa,fas,fdsa,f,fds
-     description: product
+     keywords: 南洋中医鼻炎膏,V翘睫毛增长液
+     description: 南洋中医官网推荐产品
     -
      path: qa
      title: 常见问题
-     keywords: fda,fa,fdsa,fa,dsfdsa,fas,fdsa
-     description: qa
+     keywords: 南洋中医产品常见问题
+     description: 南洋中医产品常见问题
+    -
+     path: validate
+     title: 真伪查询
+     keywords: 真伪查询
+     description: 真伪查询

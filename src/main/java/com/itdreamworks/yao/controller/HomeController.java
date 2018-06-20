@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -82,7 +83,8 @@ public class HomeController extends BaseArticleController {
         Menu menu = getCurrentMenu(request, menus);
 
         if (null != menu) {
-            List<SimpleArticleForShow> articles = articleService.findByMenuIdForShow(menu.getId());
+            //List<SimpleArticleForShow> articles = articleService.findByMenuIdForShow(menu.getId());
+            List<Article> articles = articleService.findByMenuIdForContent(menu.getId());
             if (articles.size() > 0) {
                 map.put("article", articles.get(0));
                 return "/home/about";
@@ -99,12 +101,22 @@ public class HomeController extends BaseArticleController {
 
         map.put("title", menu.getTitle());
 
+        Map<String, String> page = getPageConfig("validate");
+        if (null != page) {
+            map.put("page", page);
+        }
+
+
         return "/home/validate";
     }
 
     @PostMapping("/result")
     public String validateResult(String code, String vcode, HttpServletRequest request, Map<String, Object> map) {
         prepareDataForViewPart(map);
+        Map<String, String> page = getPageConfig("validate");
+        if (null != page) {
+            map.put("page", page);
+        }
         Object obj = request.getSession().getAttribute(ImageController.VCODE);
         ProductResult result = new ProductResult();
 
@@ -113,9 +125,11 @@ public class HomeController extends BaseArticleController {
             if (null != product) {
                 BeanUtils.copyProperties(product, result);
                 if (!result.isUsed()) {
+                    result.setCheckDate(new Date());
                     productDao.modify(code);
                 }
             } else {
+                result.setHave(false);
                 result.setErrorMsg("<b>查无此物，考虑应为仿冒产品；购买请认准<code>南洋中医</code>品牌。</b>");
             }
         } else {

@@ -17,8 +17,9 @@ public class ImageController {
     public static final String VCODE = "vcode";
     @Autowired
     private DefaultKaptcha defaultKaptcha;
+
     @GetMapping(value = "/vcode")
-    public void defaultKaptcha(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception{
+    public void defaultKaptcha(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception {
         byte[] captchaChallengeAsJpeg = null;
         ByteArrayOutputStream jpegOutputStream = new ByteArrayOutputStream();
         try {

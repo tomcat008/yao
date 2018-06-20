@@ -15,7 +15,7 @@ public class Article implements Serializable {
     }
 
     private int menuId;
-    private String title, author, pic, content,keyWords,description;
+    private String title, author, pic, content, keyWords, description;
     private Date publishDate;
 
 
@@ -27,7 +27,7 @@ public class Article implements Serializable {
         isShow = show;
     }
 
-    private  boolean isShow;
+    private boolean isShow;
 
     public String getKeyWords() {
         return keyWords;

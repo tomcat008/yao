@@ -6,23 +6,30 @@
 <body class="home-template">
 <nav th:replace="/common/managemenu :: menu"></nav>
 <div class="container">
-<div class="row">
-    <ol class="breadcrumb">
-        <li><a href="#">系统管理</a></li>
-        <li>菜单管理</li>
-    </ol>
-</div>
-<table class="table table-hover">
-    <tr><th>#</th><th>菜单名</th><th>链接</th><th>状态</th><th>排序</th><th>操作</th></tr>
-    <tr th:each="m:${menus}">
-        <td th:text="${m.id}"></td>
-        <td th:text="${m.title}"></td>
-        <td th:text="${m.url}"></td>
-        <td th:text="${m.isShow}?'显示':'隐藏'"></td>
-        <td th:text="${m.sortRight}"></td>
-        <td><a th:href="@{'/manage/menu/edit/'+${m.id}}" class="btn btn-warning btn-xs">编辑</a> </td>
-    </tr>
-</table>
+    <div class="row">
+        <ol class="breadcrumb">
+            <li><a href="#">系统管理</a></li>
+            <li>菜单管理</li>
+        </ol>
+    </div>
+    <table class="table table-hover">
+        <tr>
+            <th>#</th>
+            <th>菜单名</th>
+            <th>链接</th>
+            <th>状态</th>
+            <th>排序</th>
+            <th>操作</th>
+        </tr>
+        <tr th:each="m:${menus}">
+            <td th:text="${m.id}"></td>
+            <td th:text="${m.title}"></td>
+            <td th:text="${m.url}"></td>
+            <td th:text="${m.isShow}?'显示':'隐藏'"></td>
+            <td th:text="${m.sortRight}"></td>
+            <td><a th:href="@{'/manage/menu/edit/'+${m.id}}" class="btn btn-warning btn-xs">编辑</a></td>
+        </tr>
+    </table>
 </div>
 <div th:include="/common/load_js :: loadJs"></div>
 </body>

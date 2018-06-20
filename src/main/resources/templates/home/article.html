@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title th:text="${article.title}"></title>
-    <meta name="keywords" th:content="${article.keyWords}" />
-    <meta name="description" th:content="${article.description}" />
+    <meta name="keywords" th:content="${article.keyWords}"/>
+    <meta name="description" th:content="${article.description}"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -24,15 +24,13 @@
                         <h1 class="post-title" th:text="${article.title}"></h1>
                         <section class="post-meta">
                             <span class="author">作者：<a th:text="${article.author}"></a></span> •
-                            <time class="post-date" th:title="${#dates.format(article.publishDate, 'yyyy年MM月dd日')}" th:text="${#dates.format(article.publishDate, 'yyyy年MM月dd日')}"></time>
+                            <time class="post-date" th:title="${#dates.format(article.publishDate, 'yyyy年MM月dd日')}"
+                                  th:text="${#dates.format(article.publishDate, 'yyyy年MM月dd日')}"></time>
                         </section>
                     </header>
-                    <div class="featured-media" th:if="${article.pic}">
-                        <a th:href="@{'/article/'+${article.id}}" th:text="${article.title}"><img th:src="@{'/articles/'+${article.id}+'/pic.jpg'}" th:alt="${article.title}"></a>
-                    </div>
 
                     <section class="featured-media" th:if="${article.pic}">
-                        <img th:src="@{'/articles/'+${article.id}+'/pic.jpg'}" th:alt="${article.title}" />
+                        <img th:src="@{'/articles/'+${article.id}+'/pic.jpg'}" th:alt="${article.title}"/>
                     </section>
 
                     <section class="post-content" th:utext="${article.content}">
@@ -45,31 +43,33 @@
                         </div>
 
                         <div class="pull-right share">
-                            <div class="bdsharebuttonbox share-icons bdshare-button-style0-24"
-                                 data-bd-bind="1524365951055">
-                                <a href="#" class="bds_more" data-cmd="more"></a>
-                                <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
-                                <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-                                <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
-                                <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
-                                <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-                            </div>
+                            <div class="bdsharebuttonbox share-icons"><a href="#" class="bds_more" data-cmd="more"></a><a href="#"
+                                                                                                              class="bds_qzone"
+                                                                                                              data-cmd="qzone"
+                                                                                                              title="分享到QQ空间"></a><a
+                                    href="#"
+                                    class="bds_tsina"
+                                    data-cmd="tsina"
+                                    title="分享到新浪微博"></a><a
+                                    href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#"
+                                                                                                   class="bds_renren"
+                                                                                                   data-cmd="renren"
+                                                                                                   title="分享到人人网"></a><a
+                                    href="#" class="bds_weixin"
+                                    data-cmd="weixin"
+                                    title="分享到微信"></a></div>
                         </div>
                     </footer>
-
                 </article>
 
                 <div class="about-author clearfix">
-                    <a href="/author/wangsai/"><img
-                            src="http://static.ghostchina.com/image/5/ea/da657733ee8c9add9cf3fd70183a6.png" alt="王赛"
+                    <a><img
+                            src="/images/nanyang.png" alt="ico"
                             class="avatar pull-left"></a>
 
                     <div class="details">
                         <div class="author">
                             原文 <a th:href="@{'/article/'+${article.id}}" th:text="${article.title}"></a>
-                        </div>
-                        <div class="meta-info">
-                            <span class="loaction">原文地址</span><a href="#">个人网站/博客</a></span>
                         </div>
                     </div>
                 </div>
@@ -82,5 +82,6 @@
 <div th:replace="/common/copyright :: copyright"></div>
 <a th:replace="/common/gotop :: gotop"></a>
 <div th:include="/common/load_js :: loadJs"></div>
+<script src="/scripts/share.js"></script>
 </body>
 </html>

@@ -10,11 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Component
-public class ManageInterceptor implements HandlerInterceptor{
+public class ManageInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         Object object = request.getSession().getAttribute(Manager.MANAGER_IDENTITY);
-        if(null != object)
+        if (null != object)
             return true;
         else {
             response.sendRedirect(LoginController.LOGIN_URL);

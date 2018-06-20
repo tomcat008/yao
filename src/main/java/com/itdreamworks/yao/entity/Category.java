@@ -1,8 +1,9 @@
 package com.itdreamworks.yao.entity;
 
 public enum Category {
-    BiYanGao("鼻炎膏",1);
-    private Category(String name,int value){
+    BiYanGao("鼻炎膏", 1);
+
+    private Category(String name, int value) {
         this.name = name;
         this.value = value;
     }

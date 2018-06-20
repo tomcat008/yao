@@ -1,9 +1,9 @@
 package com.itdreamworks.yao.entity;
 
 public class Manager {
-    public static final String MANAGER_IDENTITY="UserIdentity";
+    public static final String MANAGER_IDENTITY = "UserIdentity";
     private int id;
-    private String loginId,password;
+    private String loginId, password;
 
     public int getId() {
         return id;

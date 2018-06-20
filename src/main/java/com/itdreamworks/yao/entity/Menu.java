@@ -3,7 +3,7 @@ package com.itdreamworks.yao.entity;
 import java.io.Serializable;
 
 public class Menu implements Serializable {
-    private int id,sortRight;
+    private int id, sortRight;
     private boolean isShow;
 
     public boolean isCurrent() {
@@ -15,7 +15,7 @@ public class Menu implements Serializable {
     }
 
     private boolean current;
-    private String title,url;
+    private String title, url;
 
     public int getId() {
         return id;

@@ -6,7 +6,7 @@ import com.itdreamworks.yao.entity.Category;
 import java.util.Date;
 
 public class Product {
-    private boolean used;
+    private boolean used, have = true;
 
     public String getColorValue() {
         return colorValue;
@@ -17,6 +17,7 @@ public class Product {
     }
 
     private String colorValue;
+
     public int getCategoryId() {
         return categoryId;
     }
@@ -36,12 +37,16 @@ public class Product {
         this.code = code;
     }
 
-    private String code,pic,categoryName,description;
+    private String code, pic, categoryName, description;
     private Date checkDate;
 
 
     public boolean isHave() {
-        return true;
+        return have;
+    }
+
+    public void setHave(boolean have) {
+        this.have = have;
     }
 
     public boolean isUsed() {

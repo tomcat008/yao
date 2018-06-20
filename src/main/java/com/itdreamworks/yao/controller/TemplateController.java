@@ -18,14 +18,15 @@ public class TemplateController {
 
     @Autowired
     private LocalMessageUtil messageUtil;
+
     /**
      * 返回html模板.
      */
     @RequestMapping("/hello")
-    public String helloHtml(Map<String,Object> map){
-        String welcome =  messageUtil.getMessage("welcome");
-        map.put("welcome",welcome);
-        return"/helloHtml";
+    public String helloHtml(Map<String, Object> map) {
+        String welcome = messageUtil.getMessage("welcome");
+        map.put("welcome", welcome);
+        return "/helloHtml";
     }
 
 //    @RequestMapping("/changeLanauage")

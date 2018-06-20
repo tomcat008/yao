@@ -50,7 +50,7 @@ public class SimpleArticleForManage {
     private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
     public int getMenuId() {
-        if(null == menuId)
+        if (null == menuId)
             return 0;
         String[] ids = menuId.split(",");
         int i = 0;

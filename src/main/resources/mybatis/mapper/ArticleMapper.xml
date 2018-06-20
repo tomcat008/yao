@@ -11,7 +11,8 @@
         <result column="PublishDate" jdbcType="DATE" property="publishDate"/>
         <result column="IsShow" jdbcType="BIT" property="isShow"/>
     </resultMap>
-    <resultMap id="SimpleArticleForShowResultMap" extends="SimpleArticleForManageResultMap" type="com.itdreamworks.yao.model.SimpleArticleForShow">
+    <resultMap id="SimpleArticleForShowResultMap" extends="SimpleArticleForManageResultMap"
+               type="com.itdreamworks.yao.model.SimpleArticleForShow">
         <result column="Pic" jdbcType="VARCHAR" property="pic"/>
     </resultMap>
     <resultMap id="ArticleResultMap" type="com.itdreamworks.yao.entity.Article">
@@ -57,6 +58,14 @@
         WHERE
         MenuId <![CDATA[ & ]]> #{menuId} = #{menuId}
     </select>
+    <select id="findByMenuIdForContent" resultMap="ArticleResultMap" parameterType="INTEGER">
+        select
+        <include refid="All_Column_List"/>
+        from
+        <include refid="Table"/>
+        WHERE
+        MenuId <![CDATA[ & ]]> #{menuId} = #{menuId}
+    </select>
     <select id="findByMenuIdForShow" resultMap="SimpleArticleForShowResultMap" parameterType="INTEGER">
         select
         <include refid="Less_Column_List"/>
@@ -97,7 +106,8 @@
         WHERE
         Id=#{id}
     </update>
-    <insert id="add" parameterType="com.itdreamworks.yao.model.SimpleArticleForManage" useGeneratedKeys="true" keyProperty="id">
+    <insert id="add" parameterType="com.itdreamworks.yao.model.SimpleArticleForManage" useGeneratedKeys="true"
+            keyProperty="id">
         INSERT INTO
         <include refid="Table"/>
         (MenuId,Title, Author, PublishDate,KeyWords,Description,IsShow)

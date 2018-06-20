@@ -2,7 +2,7 @@ package com.itdreamworks.yao.model;
 
 
 public class SimpleArticleForShow extends SimpleArticleForManage {
-   private String pic;
+    private String pic;
 
     public String getPic() {
         return pic;

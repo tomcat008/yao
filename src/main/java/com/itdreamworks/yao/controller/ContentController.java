@@ -6,7 +6,6 @@ import com.itdreamworks.yao.model.ContentArticleForManage;
 import com.itdreamworks.yao.utils.FileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.ResourceUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -26,8 +25,12 @@ public class ContentController extends BaseArticleController {
     public String get(@PathVariable("id") int id, Map<String, Object> map) throws Exception {
         Article article = articleService.find(id);
         if (null == article.getContent()) {
-            File tmpFile = ResourceUtils.getFile("classpath:tmp/article.html");
-            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(tmpFile)));
+            InputStream stream = getClass().getClassLoader().getResourceAsStream("tmps/article.html");
+//            File targetFile = new File("xxx.pdf");
+//            FileUtils.copyInputStreamToFile(stream, targetFile);
+ //           File tmpFile = ResourceUtils.getFile("classpath:");
+//            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(tmpFile)));
+            BufferedReader br = new BufferedReader(new InputStreamReader(stream));
             StringBuilder sb = new StringBuilder();//定义一个字符串缓存，将字符串存放缓存中
             String s = "";
             while ((s = br.readLine()) != null) {
@@ -42,18 +45,19 @@ public class ContentController extends BaseArticleController {
     }
 
     @PostMapping(value = "/save")
-    public String save(@RequestParam("pic") MultipartFile pic, ContentArticleForManage article, BindingResult bindingResult, Map<String, Object> map) throws Exception {
+    public String save(@RequestParam("pc") MultipartFile pic, ContentArticleForManage article, BindingResult bindingResult, Map<String, Object> map) throws Exception {
         if (!pic.isEmpty()) {
             String path = articleDirectoryConfig.getDirectoryOrFilePath(String.format("%d/pic.jpg", article.getId()));
             FileUtil.uploadFile(pic.getBytes(), path);
-            article.setPic(String.format("/articles/%d/pic.jpg",article.getId()));
+//            article.setPic(String.format("/articles/%d/pic.jpg",article.getId()));
+            article.setPic("pic.jpg");
         }
         if (articleService.modifyContent(article)) {
             map.put("msg", "修改内容成功！");
-            return "success";
+            return "/success";
         } else {
             map.put("msg", "修改内容失败！");
-            return "failed";
+            return "/failed";
         }
     }
 

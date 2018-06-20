@@ -12,7 +12,7 @@ public class BaseArticleController extends BaseController {
     protected ArticleService articleService;
 
 
-    protected List<Article> getMenuArticles(int menuId){
+    protected List<Article> getMenuArticles(int menuId) {
         return articleService.findByMenuId(menuId);
     }
 

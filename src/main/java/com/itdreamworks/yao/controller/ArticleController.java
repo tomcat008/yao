@@ -54,7 +54,7 @@ public class ArticleController extends BaseArticleController {
 
 //            File path = new File(ResourceUtils.getURL("classpath:").getPath());
 //            File upload = new File(path.getAbsolutePath(), String.format("static/articles/%d/", id));
-            File path = new File(articleDirectoryConfig.getDirectoryOrFilePath(""+id));
+            File path = new File(articleDirectoryConfig.getDirectoryOrFilePath("" + id));
             if (path.exists())
                 FileUtil.deleteDirectory(path);
         }
@@ -71,12 +71,12 @@ public class ArticleController extends BaseArticleController {
     }
 
     @PostMapping(value = "/addsave")
-    public String addSave( SimpleArticleForManage article, Map<String, Object> map) throws FileNotFoundException {
+    public String addSave(SimpleArticleForManage article, Map<String, Object> map) throws FileNotFoundException {
 
         if (articleService.add(article)) {
 //            File path = new File(ResourceUtils.getURL("classpath:").getPath());
 //            File upload = new File(path.getAbsolutePath(), String.format("static/articles/%d/", article.getId()));
-            File path = new File(articleDirectoryConfig.getDirectoryOrFilePath(""+article.getId()));
+            File path = new File(articleDirectoryConfig.getDirectoryOrFilePath("" + article.getId()));
             if (!path.exists())
                 path.mkdirs();
 
@@ -85,7 +85,7 @@ public class ArticleController extends BaseArticleController {
             map.put("msg", "添加文章失败！");
             map.put("link", BASE_PATH + "/add");
             map.put("linkMsg", TRY_MSG);
-            return "failed";
+            return "/failed";
         }
     }
 
@@ -114,7 +114,7 @@ public class ArticleController extends BaseArticleController {
             map.put("msg", "修改文章失败！");
             map.put("link", BASE_PATH + "/list");
             map.put("linkMsg", "返回文章列表");
-            return "failed";
+            return "/failed";
         }
     }
 

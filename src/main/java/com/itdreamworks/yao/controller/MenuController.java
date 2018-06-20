@@ -47,7 +47,7 @@ public class MenuController extends BaseController {
             map.put("msg", "添加菜单失败！");
             map.put("link", BASE_PATH + "/add");
             map.put("linkMsg", TRY_MSG);
-            return "failed";
+            return "/failed";
         }
     }
 
@@ -64,7 +64,7 @@ public class MenuController extends BaseController {
             map.put("msg", "编辑菜单失败！");
             map.put("link", BASE_PATH + "/list");
             map.put("linkMsg", "返回菜单列表");
-            return "failed";
+            return "/failed";
         }
     }
 

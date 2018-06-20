@@ -12,11 +12,20 @@ import java.util.List;
 @Component
 public interface ArticleMapper {
     List<Article> findAll();
+
     List<Article> findByMenuId(int menuId);
+
+    List<Article> findByMenuIdForContent(int menuId);
+
     List<SimpleArticleForShow> findByMenuIdForShow(int menuId);
+
     Article find(int id);
+
     int modify(SimpleArticleForManage article);
+
     int modifyContent(ContentArticleForManage article);
+
     int add(SimpleArticleForManage article);
+
     int delete(int id);
 }

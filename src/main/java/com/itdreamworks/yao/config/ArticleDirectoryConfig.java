@@ -6,8 +6,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class ArticleDirectoryConfig {
     public String getDirectoryOrFilePath(String filePath) {
-        filePath = filePath.replace('\\','/');
-        return String.format("%s%s",getArticleDirectoryPath(),filePath);
+        filePath = filePath.replace('\\', '/');
+        return String.format("%s%s", getArticleDirectoryPath(), filePath);
     }
 
     public String getArticleDirectoryPath() {

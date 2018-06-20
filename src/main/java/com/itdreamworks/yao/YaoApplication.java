@@ -18,16 +18,16 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 public class YaoApplication {
 
 
-	@Bean
-	public LocaleResolver localeResolver() {
+    @Bean
+    public LocaleResolver localeResolver() {
 
-		SessionLocaleResolver slr = new SessionLocaleResolver();
-		//设置默认区域,
-		//slr.setDefaultLocale(Locale.US);
-		return slr;
-	}
+        SessionLocaleResolver slr = new SessionLocaleResolver();
+        //设置默认区域,
+        //slr.setDefaultLocale(Locale.US);
+        return slr;
+    }
 
-	public static void main(String[] args) {
-		SpringApplication.run(YaoApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(YaoApplication.class, args);
+    }
 }

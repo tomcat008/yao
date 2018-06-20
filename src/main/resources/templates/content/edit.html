@@ -8,10 +8,14 @@
     .toolbar {
         border: 1px solid #ccc;
     }
+
     .editor {
         border: 1px solid #ccc;
     }
-    .editor img{ max-width: 100%}
+
+    .editor img {
+        max-width: 100%
+    }
 </style>
 <div class="row">
     <ol class="breadcrumb">
@@ -22,13 +26,15 @@
 </div>
 <form class="form-horizontal" enctype="multipart/form-data" method="post" action="/manage/content/save">
     <input type="hidden" name="id" th:value="${article.id}">
+    <input type="hidden" name="pic" th:value="${article.pic}">
     <div class="form-group">
         <div class="col-sm-6 col-sm-offset-1">
-            <img th:src="@{'/articles/'+${article.id}+'/pic.jpg?'+${r}}" style="max-height: 200px; max-width: 200px" alt="封面图" class="img-rounded">
+            <img th:src="@{'/articles/'+${article.id}+'/pic.jpg?'+${r}}" style="max-height: 200px; max-width: 200px"
+                 alt="封面图" class="img-rounded">
         </div>
         <div class="col-sm-4">
             <label for="exampleInputFile">封面图</label>
-            <input type="file" id="exampleInputFile" name="pic">
+            <input type="file" id="exampleInputFile" name="pc">
             <p class="help-block">点击上传封面图片</p>
         </div>
     </div>
@@ -55,7 +61,7 @@
 <script type="text/javascript" src="https://unpkg.com/wangeditor/release/wangEditor.min.js"></script>
 <script type="text/javascript">
     var E = window.wangEditor;
-    var editor = new E('#toolbar','#editor');
+    var editor = new E('#toolbar', '#editor');
     var $content = $('#content');
     editor.customConfig.onchange = function (html) {
         // 监控变化，同步更新到 textarea
@@ -63,7 +69,7 @@
     };
     editor.customConfig.uploadImgMaxLength = 1;
     editor.customConfig.uploadFileName = 'pic'
-    editor.customConfig.uploadImgServer = '/upload/pic/'+eid;
+    editor.customConfig.uploadImgServer = '/upload/pic/' + eid;//文件上次控制器信息
     editor.customConfig.uploadImgHooks = {
         error: function (xhr, editor) {
             console.log(xhr);

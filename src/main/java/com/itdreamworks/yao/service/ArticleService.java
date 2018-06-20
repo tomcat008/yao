@@ -27,6 +27,10 @@ public class ArticleService {
         return articleDao.findByMenuId(id);
     }
 
+    public List<Article> findByMenuIdForContent(int id) {
+        return articleDao.findByMenuIdForContent(id);
+    }
+
     public List<SimpleArticleForShow> findByMenuIdForShow(int id) {
         return articleDao.findByMenuIdForShow(id);
     }
@@ -40,7 +44,7 @@ public class ArticleService {
     }
 
     public boolean modifyContent(ContentArticleForManage article) {
-        return articleDao.modifyContent(article) == 1 ;
+        return articleDao.modifyContent(article) == 1;
     }
 
     public boolean add(SimpleArticleForManage article) {

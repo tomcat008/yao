@@ -16,7 +16,7 @@ import java.util.Map;
 @RequestMapping(value = "/system")
 public class LoginController {
     private static final String BASE_PATH = "/system";
-    public static final String LOGIN_URL=BASE_PATH;
+    public static final String LOGIN_URL = BASE_PATH;
 
     @Autowired
     private ManagerMapper managerDao;
@@ -30,18 +30,18 @@ public class LoginController {
     public String login(String loginId, String password, Map<String, Object> map, HttpSession session) {
         Manager manager = managerDao.find(loginId);
         if (manager.getPassword().equals(Md5Util.encode(password))) {
-            session.setAttribute(Manager.MANAGER_IDENTITY,loginId);
+            session.setAttribute(Manager.MANAGER_IDENTITY, loginId);
             return "redirect:" + MenuController.BASE_PATH + "/list";
         } else {
             map.put("msg", "用户名或密码错误！");
             map.put("link", BASE_PATH + "/login");
             map.put("linkMsg", "再次尝试登录");
-            return "failed";
+            return "/failed";
         }
     }
 
     @GetMapping(value = "/logout")
-    public String logout(HttpSession session){
+    public String logout(HttpSession session) {
         session.removeAttribute(Manager.MANAGER_IDENTITY);
         return "redirect:" + LOGIN_URL;
     }

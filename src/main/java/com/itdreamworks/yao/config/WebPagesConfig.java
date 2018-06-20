@@ -10,10 +10,10 @@ import java.util.Map;
 @Component
 @ConfigurationProperties(prefix = "web")
 public class WebPagesConfig {
-    public static final String KEY_PATH="path";
-    public static final String KEY_TITLE="title";
-    public static final String KEY_KEYWORDS="keywords";
-    public static final String KEY_DESCRIPTION="description";
+    public static final String KEY_PATH = "path";
+    public static final String KEY_TITLE = "title";
+    public static final String KEY_KEYWORDS = "keywords";
+    public static final String KEY_DESCRIPTION = "description";
 
     public List<Map<String, String>> getPagesMeta() {
         return pagesMeta;

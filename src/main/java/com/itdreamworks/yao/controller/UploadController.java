@@ -32,7 +32,7 @@ public class UploadController {
 //                File filePath = new File(path.getAbsolutePath(), String.format("static/%s", url));
 //                FileUtil.uploadFile(pic.getBytes(), filePath.getAbsolutePath());
                 FileUtil.uploadFile(pic.getBytes(), path);
-                String url = WebMvcConfig.URL_ARTICLES_DIRECTORY+filePath;
+                String url = WebMvcConfig.URL_ARTICLES_DIRECTORY + filePath;
                 return String.format("{\"errno\": 0,\"data\": [\"%s\"]}", url);
             }
             return "";
