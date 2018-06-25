@@ -5,6 +5,7 @@
         <id column="Id" jdbcType="INTEGER" property="id"/>
         <result column="Code" jdbcType="VARCHAR" property="code"/>
         <result column="CategoryId" jdbcType="INTEGER" property="categoryId"/>
+        <result column="CategoryName" jdbcType="VARCHAR" property="categoryName"/>
         <result column="Pic" jdbcType="VARCHAR" property="pic"/>
         <result column="ColorValue" jdbcType="VARCHAR" property="colorValue"/>
         <result column="Description" jdbcType="VARCHAR" property="description"/>
@@ -14,6 +15,7 @@
     <resultMap id="ProductResultMap" type="com.itdreamworks.yao.model.Product">
         <result column="Code" jdbcType="VARCHAR" property="code"/>
         <result column="CategoryId" jdbcType="INTEGER" property="categoryId"/>
+        <result column="CategoryName" jdbcType="VARCHAR" property="categoryName"/>
         <result column="Pic" jdbcType="VARCHAR" property="pic"/>
         <result column="ColorValue" jdbcType="VARCHAR" property="colorValue"/>
         <result column="Description" jdbcType="VARCHAR" property="description"/>
@@ -24,7 +26,7 @@
         productcode
     </sql>
     <sql id="Base_Column_List">
-        Id, Code, CategoryId, Pic,ColorValue,Description,Used,CheckDate
+        Id, Code, CategoryId, CategoryName,Pic,ColorValue,Description,Used,CheckDate
     </sql>
     <sql id="Fix_Option">
         Code=#{code}
@@ -56,9 +58,9 @@
     <insert id="add" parameterType="com.itdreamworks.yao.entity.Product">
         INSERT INTO
         <include refid="Table"/>
-        (Code, CategoryId, Pic,ColorValue,Description,Used,CreateDate)
+        (Code, CategoryId,CategoryName, Pic,ColorValue,Description,Used,CreateDate)
         VALUES
-        (#{code},#{categoryId}, #{pic},
+        (#{code},#{categoryId},#{categoryName}, #{pic},
         #{colorValue},#{description},0,#{createDate,jdbcType=TIMESTAMP})
     </insert>
 </mapper>

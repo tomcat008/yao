@@ -24,7 +24,6 @@ public class Product {
 
     public void setCategoryId(int categoryId) {
         this.categoryId = categoryId;
-        this.categoryName = Category.getName(categoryId);
     }
 
     private int categoryId;
@@ -37,7 +36,19 @@ public class Product {
         this.code = code;
     }
 
-    private String code, pic, categoryName, description;
+    private String code;
+    private String pic;
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+    private String categoryName;
+    private String description;
     private Date checkDate;
 
 
@@ -65,9 +76,7 @@ public class Product {
         this.pic = pic;
     }
 
-    public String getCategoryName() {
-        return categoryName;
-    }
+
 
     public String getDescription() {
         return description;
