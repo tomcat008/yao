@@ -4,7 +4,7 @@ server:
       timeout: 1200s
 spring:
   profiles:
-    active: prod
+    active: dev
   cache:
     type: ehcache
     ehcache:

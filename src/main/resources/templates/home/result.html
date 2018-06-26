@@ -21,7 +21,7 @@
                             <div class="col-sm-6">
                                 <div style="margin-top: 80px;font-weight: bold">
                                     <h5>产品名称：<code th:text="${result.categoryName}"></code></h5>
-                                    <h5>首次验证：<code th:text="${result.used}?'×':'√'"></code></h5>
+                                    <h5>首次验证：<code th:text="${result.used}?'否':'是'"></code></h5>
                                     <h5>验证时间：<code
                                             th:text="${#dates.format(result.checkDate, 'yyyy年MM月dd日 HH:mm:ss')}"></code>
                                     </h5>
